@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+#right {
+  width: 83%;
+  height: 100%;
+  background-color: whitesmoke;
+
+}
+
+#right p {
+  color: #555;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+#left {
+  width: 17%;
+  height: 100%;
+  background-color: rgb(228, 225, 225);
+}
+
+#menu {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  border-bottom: 1px solid #000;
+}
+
+#menu i:hover {
+  opacity: 1;
+}
+
+#menu i {
+  font-size: 16px;
+  opacity: 0.5;
+}
+#files{
+  width: 100%;
+  height: 95%;
+}
+
+.file {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.ficons i {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file:hover {
+  background-color: rgb(226, 225, 225);
+}
+
+.file:hover i {
+  opacity: 1;
+  cursor: pointer;
+}
+
+#over {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(85, 85, 85, 0.372);
+}
+
+#popup {
+  width: 25%;
+  height: 15%;
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+  top: 45%;
+  left: 40%;
+  padding: 10px;
+}
+
+#popup h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+#popup form {
+  display: flex;
+  width: 100%;
+}
+
+#popup input {
+  margin: 5px;
+  font-size: 18px;
+  outline: none;
+  padding: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+
+.fileform,
+.folderform {
+  width: 100%;
+  height: 8%;
+  display: none;
+}
+
+.fileform form,
+.folderform form {
+  width: 100%;
+}
+
+.fileform input,
+.folderform input {
+  width: 70%;
+  margin: 10px 10px;
+  padding: 10px 10px;
+  font-size: 15px;
+  border: 1px solid black;
+  outline: royalblue;
+  border-radius: 5px;
+}
+
+#head {
+  width: 100%;
+  height: 7%;
+  padding: 2px;
+}
+
+#context {
+  width: 100%;
+  height: 93%;
+}
+
+#head .filepre {
+  height: 100%;
+  resize: horizontal;
+  width: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #dadada;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.filepre i {
+  cursor: pointer;
+}
+
+#context textarea {
+  width: 100%;
+  height: 90%;
+  padding: 30px 20px;
+  font-size: 22px;
+  border: none;
+  outline: none;
+  resize: none;
+  background-color: transparent;
+  font-family: 'consolas';
+  font-weight: 600;
+}

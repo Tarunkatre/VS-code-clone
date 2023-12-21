@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../stylesheets/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <title>VS Code</title>
+</head>
+
+<body>
+  <div id="main">
+        <div id="over">
+        <div id="popup">
+            <h2>Rename</h2>
+            <form action="">
+            <input id="changeinp" type="text" value="" name="newname" id="">
+            <input type="submit" value="Submit">
+            </form>
+        </div>
+        </div>
+        <div id="left">
+        <div id="menu">
+            <i id="fileicon" class="ri-file-line"></i>
+            <i id="foldericon" class="ri-folder-2-line"></i>
+            <a href="/"><i class="ri-refresh-line"></i></a> 
+            <i class="ri-collage-line"></i>
+        </div>
+        <div class="form fileform">
+            <form action="/filecreate">
+            <input type="text" name="filename" id="" placeholder="filename">
+            </form>
+        </div>
+        <div class="form folderform">
+            <form action="/foldercreate">
+            <input type="text" name="foldername" id="" placeholder="foldername">
+            </form>
+        </div>
+        <div id="files">
+            <%files.forEach(function(file){%>
+            <div class="file">
+            <a href="/openfile/<%= file.name%>">
+                <%if(file.isDirectory()){%>
+                    <i class="ri-folder-2-line"></i>
+                    <%}else{%>
+                    <i class="ri-file-line"></i>
+                    <%}%>
+                        <%= file.name %>
+                    </a>
+                    <div class="ficons">
+                        <i id="edit" data-val="<%=file.name %>" class="ri-edit-line"></i>
+                        <%if(file.isDirectory()){%>
+                        <a href="/delete/folder/<%= file.name %>"> <i class="ri-delete-bin-5-line"></i></a>
+
+                    <% }else{%>
+                        <a href="/delete/<%= file.name %>"> <i class="ri-delete-bin-5-line"></i></a>
+                        <%}%>
+                    </div>
+                    </div>
+                    <%})%>
+                </div>
+        </div>
+        <div id="right">
+            <div id="head">
+                <div class="filepre">
+                  <h5><%= filename %></h5><i class="ri-close-circle-line"></i>
+                </div>
+            </div>
+            <form action="/openfile/<%= filename%>/write" id="context" method="post">
+                <textarea name="data" id="" cols="30" rows="10"><%= data %></textarea>
+                <input type="submit" value="save">
+            </form>
+        </div>
+    </div>
+    <script>
+      var state = 0;
+      function bandkro(){
+          document.querySelectorAll('.form').forEach(function(elem){
+          elem.style.display = 'none';
+      })}
+      document.querySelector('#fileicon').addEventListener('click',function(){
+        bandkro();
+        if(state === 0){
+          document.querySelector('.fileform').style.display = 'initial';
+          state = 1;
+        }else{
+          document.querySelector('.fileform').style.display = 'none';
+          state = 0;
+        }
+            })
+      document.querySelector('#foldericon').addEventListener('click', function () {
+        bandkro();
+      if (state === 0) {
+        document.querySelector('.folderform').style.display = 'initial';
+            state = 1;
+          } else {
+            document.querySelector('.folderform').style.display = 'none';
+            state = 0;
+          }
+        })
+        let a = document.querySelectorAll("#edit")
+          a.forEach(element => {
+            element.addEventListener("click", () => {
+              document.querySelector("#over").style.display = "initial";
+              document.querySelector("#changeinp").value = `${element.dataset.val}`
+              document.querySelector("#popup form").action = `/rename/${element.dataset.val}`
+            })
+          });
+    </script>
+</body>
+</html>
